@@ -441,7 +441,7 @@
       else { pushHistory(); clearSelection(); updateTags(); }
       return;
     }
-    if (mod && e.key.toLowerCase() === "c" && !e.shiftKey && selectedElements.length > 0) {
+    if (mod && e.key.toLowerCase() === "c" && !e.shiftKey && selectedElements.length > 0 && !paused) {
       e.preventDefault();
       copyPrompt();
       return;
@@ -836,7 +836,7 @@
       tag: el.tagName.toLowerCase(),
       text: truncate(el.textContent, 80),
       classes: Array.from(el.classList),
-      outerHTML: el.outerHTML.slice(0, 200),
+      outerHTML: el.outerHTML,
       dataAttrs,
       ...reactInfo,
     };
