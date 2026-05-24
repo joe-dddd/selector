@@ -6,7 +6,7 @@ A bookmarklet that lets you visually select elements on any web page, add instru
 
 ## Install
 
-1. Visit the **[install page](https://oil-oil.github.io/selector/)**
+1. Visit the **[install page](https://joe-dddd.github.io/selector/)**
 2. Drag the **Selector** button to your bookmarks bar (one-time)
 3. Done
 
