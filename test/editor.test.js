@@ -50,7 +50,7 @@ function keydown(window, key, options = {}) {
   return event;
 }
 
-test("copy prompt includes complete selected element html", () => {
+test("copy prompt truncates selected element html at 200 chars", () => {
   const longText = "Latest commit ".repeat(30);
   const { dom, clipboardWrites } = createEditorDom(`
     <table>
@@ -71,7 +71,10 @@ test("copy prompt includes complete selected element html", () => {
     .find((line) => line.trimStart().startsWith("html: "));
 
   assert.ok(htmlLine, "expected copied prompt to include an html line");
-  assert.ok(htmlLine.includes("</td>"), htmlLine);
+  const htmlValue = htmlLine.replace(/^.*html:\s*/, "");
+  assert.equal(htmlValue.length, 200);
+  assert.ok(htmlValue.startsWith("<td"), htmlValue);
+  assert.ok(!htmlValue.includes("</td>"), htmlValue);
 });
 
 test("paused selector does not intercept native copy shortcut", () => {

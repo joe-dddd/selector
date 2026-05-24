@@ -836,7 +836,7 @@
       tag: el.tagName.toLowerCase(),
       text: truncate(el.textContent, 80),
       classes: Array.from(el.classList),
-      outerHTML: el.outerHTML,
+      outerHTML: el.outerHTML.slice(0, 200),
       dataAttrs,
       ...reactInfo,
     };
